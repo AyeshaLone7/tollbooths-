@@ -1,0 +1,80 @@
+#include<iostream>
+using namespace std;
+
+class tollbooth
+{
+    unsigned int TC;//to show total cars
+    unsigned int PC;//to show payed cars
+    unsigned int NPC;//to show non payed cars
+
+    double TA;//to show total amount 
+
+public:
+
+    tollbooth()//constructor Initialize Everything to 0
+    {
+        TC = 0;
+        PC= 0;
+        NPC= 0;
+        TA = 0;
+    }
+
+    void payingCar()//this function increment total car ,payed car and add 50 cents to total amount
+    {
+        TC++;
+        PC++;
+        TA += 0.50;
+    }
+
+    void nopayCar()//this function increments total car and non payed cars
+    {
+        TC++;
+        NPC++;
+    }
+
+    void display() const//it displays everything 
+    {
+        cout << "\nTotal Cars: " << TC;
+        cout << "\nPaying Cars: " << PC;
+        cout << "\nNon Paying Cars: " <<NPC;
+        cout << "\nTotal Cash: " << TA << "$"<<endl;
+    }
+};
+
+int main()
+{
+    tollbooth a;
+    string s;
+
+    while(true)//loop to enter cars 
+    {
+        cout << "\nPress p for Car that payed";
+        cout << "\nPress n for Car that not payed";
+        cout << "\nPress esc to exit : ";
+
+        cin >> s;
+
+        if(s == "p")
+        {
+            a.payingCar();//increment TC and Payed car
+        }
+
+        else if(s == "n")
+        {
+            a.nopayCar();//increment TC and non payed car
+        }
+
+        else if(s == "esc")
+        {
+            cout << "\nFinal Record:";
+            a.display();//show details
+            break;
+        }
+
+        else
+        {
+            cout << "\nInvalid Character!";
+        }
+    }
+
+    return 0;}
